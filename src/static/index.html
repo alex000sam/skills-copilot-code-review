@@ -28,6 +28,10 @@
             <span id="display-name"></span>
             <button id="logout-button">Logout</button>
           </div>
+          <button id="announcements-button" class="icon-button" title="View announcements">
+            <span class="announce-icon">📣</span>
+            <span>Announcements</span>
+          </button>
         </div>
       </div>
     </header>
@@ -137,18 +141,45 @@
       </div>
     </div>
 
+    <!-- Announcements Modal -->
+    <div id="announcements-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-announcements-modal">&times;</span>
+        <h3>Announcements</h3>
+        <div id="announcements-list">
+          <!-- Announcements will be rendered here -->
+          <p>Loading announcements...</p>
+        </div>
+        <div style="margin-top:12px; display:flex; justify-content:flex-end; gap:8px;">
+          <button id="add-announcement-button">Add Announcement</button>
+        </div>
+
+        <!-- Add/Edit form (hidden by default) -->
+        <div id="announcement-form-container" class="hidden" style="margin-top:12px;">
+          <form id="announcement-form">
+            <div class="form-group">
+              <label for="announcement-text">Message:</label>
+              <textarea id="announcement-text" required placeholder="Enter announcement text" rows="3" style="width:100%;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="announcement-start">Start date (optional):</label>
+              <input type="date" id="announcement-start" />
+            </div>
+            <div class="form-group">
+              <label for="announcement-expire">Expiration date (required):</label>
+              <input type="date" id="announcement-expire" required />
+            </div>
+            <input type="hidden" id="announcement-id" value="" />
+            <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:8px;">
+              <button type="button" id="cancel-announcement">Cancel</button>
+              <button type="submit" id="save-announcement">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
-    <script>
-      // Load announcement from external JSON file
-      fetch('announcement.json')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('announcement-banner').textContent = data.text;
-        })
-        .catch(() => {
-          document.getElementById('announcement-banner').textContent =
-            "📢 Activity registration is open until the end of the month. Don't lose your spot!";
-        });
-    </script>
+    
   </body>
 </html>
