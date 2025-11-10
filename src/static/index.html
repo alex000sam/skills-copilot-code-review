@@ -12,6 +12,9 @@
     />
   </head>
   <body>
+    <div class="announcement-banner" id="announcement-banner">
+      <!-- Announcement will be loaded here -->
+    </div>
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
@@ -135,5 +138,17 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+      // Load announcement from external JSON file
+      fetch('announcement.json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('announcement-banner').textContent = data.text;
+        })
+        .catch(() => {
+          document.getElementById('announcement-banner').textContent =
+            "📢 Activity registration is open until the end of the month. Don't lose your spot!";
+        });
+    </script>
   </body>
 </html>
