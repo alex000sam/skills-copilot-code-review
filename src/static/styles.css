@@ -672,3 +672,35 @@ footer {
   padding: 15px;
   font-weight: bold;
 }
+
+/* Announcements modal and items */
+.announcement-item {
+  display: block;
+}
+.announcement-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+#announcements-modal .modal-content {
+  max-width: 640px;
+}
+
+#announcements-list p {
+  color: var(--text-secondary);
+}
+
+#add-announcement-button,
+#announcements-modal button {
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+/* Make announcement banner stand out with subtle gradient */
+.announcement-banner {
+  background: linear-gradient(90deg, #2e7d32, #1b5e20);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
